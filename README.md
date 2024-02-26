@@ -20,6 +20,7 @@ Zimple Zuma is a fun and addictive game where the objective is to shoot balls in
 
 ## How to Run
 
-Simply open the `index.html` file in a web browser to start playing Zimple Zuma.
+**Play Zimple Zuma [here]( https://sabr5840.github.io/ZimpleZuma/)**
 
 Enjoy the game!
+
