@@ -1,0 +1,106 @@
+body {
+  background-color: #222;
+  color: #fff;
+}
+
+main {
+  display: flex;
+  gap: 1em;
+}
+
+#intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto; 
+}
+
+.intro-logo {
+  width: 500px; 
+  height: auto; 
+}
+
+#intro p {
+  margin-top: 20px; 
+}
+
+#board {
+  position: relative;
+  min-width: 70vw;
+  min-height: 30vw;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+#info {
+  border: 1px solid #aaa;
+  width: 100%;
+  padding: 1.5em;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#balls {
+  display: flex;
+  margin-top: 0; /* Nulstil topmargen */
+  align-self: flex-start; /* Tilføj denne linje for at justere placeringen */
+}
+
+.ball img {
+  width: 100px;
+  height: 100px;
+}
+
+#cannon {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 50px);
+}
+
+.hide {
+  display: none;
+}
+
+.animatefromcannon {
+  animation: animatefromcannon 0.8s ease-in-out 1;
+}
+
+@keyframes animatefromcannon {
+  from {
+    transform: translate(var(--delta-x), var(--delta-y));
+  }
+  to {
+    transform: translate(0,0);
+  }
+}
+
+.expand {
+  animation: expand .2s ease-in .8s 1 backwards;
+}
+
+@keyframes expand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
+}
+
+.remove {
+  animation: implode .7s ease-in 1 forwards;
+}
+
+@keyframes implode {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 0;
+  }
+}
