@@ -6,7 +6,7 @@ Zimple Zuma is a fun and addictive game where the objective is to shoot balls in
 
 ## How to Play
 
-1. Open `index.html` in your web browser.
+1. **Play Zimple Zuma [here]( https://sabr5840.github.io/ZimpleZuma/)**
 2. Click on "Start the game" to begin.
 3. Shoot the cannonball between two balls to create matching groups.
 4. Clear the entire row to score points.
@@ -17,10 +17,4 @@ Zimple Zuma is a fun and addictive game where the objective is to shoot balls in
 - Implements a Linked List for managing the sequence of balls.
 - Follows a model-view-controller architecture for a clean code structure.
 - Utilizes CSS animations for dynamic visual effects.
-
-## How to Run
-
-**Play Zimple Zuma [here]( https://sabr5840.github.io/ZimpleZuma/)**
-
-Enjoy the game!
 
