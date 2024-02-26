@@ -54,6 +54,9 @@ function clickBall(event) {
     existingBall.parentNode.insertBefore(newBall, existingBall.nextElementSibling);
   }
 
+  // make newBall clickable as well
+  makeBallClickable(newBall);
+
   // now the cannonBall is inserted in the chain - but it has to be animated, so FLIP it
   // Keep the div where it is, only animate the img.
   const img = newBall.firstElementChild;
@@ -80,11 +83,11 @@ function clickBall(event) {
     img.style.removeProperty("--delta-x");
     img.style.removeProperty("--delta-y");
 
-    // make newBall clickable as well
-    makeBallClickable(newBall);
-
     // create new cannonball
     reloadCannon();
+
+    // handle removal of matching balls
+    handleRemoveBalls();
   }
 }
 
@@ -102,6 +105,7 @@ function createBallElement(balltype) {
 function addBallToChain(ball) {
   // add ball to element
   document.querySelector("#balls").appendChild(ball);
+  // make ball clickable
   makeBallClickable(ball);
 }
 
@@ -135,5 +139,39 @@ function startGame() {
 
   document.getElementById("intro").classList.add("hide");
   document.getElementById("game").classList.remove("hide");
+}
 
+function handleRemoveBalls() {
+  const balls = document.querySelectorAll('.ball');
+  const ballsArray = Array.from(balls);
+
+  // Mark balls for removal
+  const matchingBalls = findMatchingBalls(ballsArray);
+
+  // Call function to remove balls from the chain
+  removeBallsFromChain(matchingBalls);
+}
+
+function findMatchingBalls(ballsArray) {
+  const matchingBalls = [];
+
+  // Iterate through the balls to find matching groups
+  ballsArray.forEach(ball => {
+    const balltype = ball.dataset.balltype;
+    const matchingGroup = [ball];
+
+    // Check for matching balls of the same type after this ball
+    let nextBall = ball.nextElementSibling;
+    while (nextBall && nextBall.dataset.balltype === balltype) {
+      matchingGroup.push(nextBall);
+      nextBall = nextBall.nextElementSibling;
+    }
+
+    // If the matching group has three or more balls, mark for removal
+    if (matchingGroup.length >= 3) {
+      matchingBalls.push(...matchingGroup);
+    }
+  });
+
+  return matchingBalls;
 }
